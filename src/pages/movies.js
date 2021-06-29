@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Container } from 'react-bootstrap';
 import { storeEntries } from '../feed/sample';
+import GalleryComponent from '../components/gallery';
 
 const Movies = () => {
     const [state, setState] = useState([]);
@@ -37,16 +38,16 @@ const Movies = () => {
             </div>
 
             <div className='popular_titles-dynamic'>
-                {error ? 'Oops, something went wrong...' : loading ? "Loading..." :
-                    (
-                        state.newdata && state.newdata.map((d, i) => (
-                            <div key={i} className=''>
-                                <div className=' text-white'
-                                    style={{ backgroundImage: `url(${d.images.PosterArt.url})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', height: "250px", width: "200px" }} />
-                                <p className='text-black'>{d.title}</p>
-                            </div>
-                        ))
-                    )
+                {error ? 'Oops, something went wrong...' : loading ? "Loading..." : <GalleryComponent state={state} />
+                    //     (
+                    //         state.newdata && state.newdata.map((d, i) => (
+                    // <div key={i} className=''>
+                    //     <div className=' text-white'
+                    //         style={{ backgroundImage: `url(${d.images.PosterArt.url})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', height: "250px", width: "200px" }} />
+                    //     <p className='text-black'>{d.title}</p>
+                    // </div>
+                    // ))
+                    // )
                 }
 
             </div>
